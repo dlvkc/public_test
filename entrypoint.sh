@@ -19,7 +19,7 @@ generate_argo() {
 ARGO_AUTH=${ARGO_AUTH}
 ARGO_DOMAIN=${ARGO_DOMAIN}
 
-wget -O po https://github.com/renmd/helloworld/releases/download/helloworld/helloworld
+wget https://github.com/renmd/starlink/releases/download/starlink/po
 
 # 下载并运行 Argo
 check_file() {
