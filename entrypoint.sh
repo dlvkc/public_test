@@ -140,7 +140,6 @@ do
   sleep $((60*60*24*5))
 done
 }
-
 check_variable
 run
 EOF
