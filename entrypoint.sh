@@ -132,6 +132,7 @@ check_variable() {
   [[ -z "\${KOYEB_ACCOUNT}" || -z "\${KOYEB_ACCOUNT}" ]] && exit
 }
 
+# 开始保活
 run() {
 while true
 do
