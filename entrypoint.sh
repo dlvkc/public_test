@@ -136,6 +136,7 @@ run() {
 while true
 do
   curl -sX POST https://app.koyeb.com/v1/account/login -H 'Content-Type: application/json' -d '{"email":"${KOYEB_ACCOUNT}","password":"${KOYEB_PASSWORD}"}'
+  echo "正在保活koyeb,5天登录一次"
   sleep $((60*60*24*5))
 done
 }
