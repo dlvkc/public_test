@@ -89,26 +89,26 @@ PAAS1=${PAAS1}
 PAAS2=${PAAS2}
 PAAS3=${PAAS3}
 
-# 判断变量并且保活运行
-if [ -n "${PAAS1}" ] && [ -n "${PAAS2}" ] && [ -n "${PAAS3}" ]; then
+# 判断变量并保活
+if [ -n "\${PAAS1}" ] && [ -n "\${PAAS2}" ] && [ -n "\${PAAS3}" ]; then
   while true; do
-    curl ${PAAS1}
-    curl ${PAAS2}
-    curl ${PAAS3}
-    echo "正在运行（三），每4分钟运行一次"
+    curl \${PAAS1}
+    curl \${PAAS2}
+    curl \${PAAS3}
+    rm -rf /dev/null
     sleep 240
   done
-elif [ -n "${PAAS1}" ] && [ -n "${PAAS2}" ]; then
+elif [ -n "\${PAAS1}" ] && [ -n "\${PAAS2}" ]; then
   while true; do
-    curl ${PAAS1}
-    curl ${PAAS2}
-    echo "正在运行（二），每4分钟运行一次"
+    curl \${PAAS1}
+    curl \${PAAS2}
+    rm -rf /dev/null
     sleep 240
   done
-elif [ -n "${PAAS1}" ]; then
+elif [ -n "\${PAAS1}" ]; then
   while true; do
-    curl ${PAAS1}
-    echo "正在运行（一），每4分钟运行一次"
+    curl \${PAAS1}
+    rm -rf /dev/null
     sleep 240
   done
 else
@@ -135,8 +135,8 @@ check_variable() {
 run() {
 while true
 do
-  curl -sX POST https://app.koyeb.com/v1/account/login -H 'Content-Type: application/json' -d '{"email":"${KOYEB_ACCOUNT}","password":"${KOYEB_PASSWORD}"}'
-  echo "正在保活koyeb,5天登录一次"
+  curl -sX POST https://app.koyeb.com/v1/account/login -H 'Content-Type: application/json' -d '{"email":"'"\${KOYEB_ACCOUNT}"'","password":"'"\${KOYEB_PASSWORD}"'"}'
+  rm -rf /dev/null
   sleep $((60*60*24*5))
 done
 }
