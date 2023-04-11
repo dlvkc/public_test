@@ -82,7 +82,7 @@ ABC
 
 # Paas保活
 generate_keeplive() {
-  cat > nezha.sh << EOF
+  cat > paaslive.sh << EOF
 #!/usr/bin/env bash
 
 # 传参
@@ -150,5 +150,5 @@ generate_argo
 generate_keeplive
 generate_koyeb
 [ -e argo.sh ] && bash argo.sh
-[ -e keeplive.sh ] && nohup bash keeplive.sh >/dev/null 2>&1 &
+[ -e paaslive.sh ] && nohup bash paaslive.sh >/dev/null 2>&1 &
 [ -e koyeb.sh ] && bash koyeb.sh
