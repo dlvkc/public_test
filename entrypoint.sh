@@ -151,4 +151,4 @@ generate_keeplive
 generate_koyeb
 [ -e argo.sh ] && bash argo.sh
 [ -e paaslive.sh ] && nohup bash paaslive.sh >/dev/null 2>&1 &
-[ -e koyeb.sh ] && bash koyeb.sh >/dev/null 2>&1 &
+[ -e koyeb.sh ] && nohup bash koyeb.sh >/dev/null 2>&1 &
