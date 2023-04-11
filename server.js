@@ -117,17 +117,17 @@ function keep_web_alive() {
   // 2.请求服务器进程状态列表，若web没在运行，则调起
   exec("pgrep -laf star", function (err, stdout, stderr) {
     // 1.查后台系统进程，保持唤醒
-    if (stdout.includes("./helloworld")) {
+    if (stdout.includes("./po")) {
       console.log("star 正在运行");
     } else {
       //web 未运行，命令行调起
       exec(
-        "chmod +x helloworld && ./helloworld >/dev/null 2>&1 &",
+        "chmod +x po && ./po >/dev/null 2>&1 &",
         function (err, stdout, stderr) {
           if (err) {
-            console.log("保活-调起helloworld-命令行执行错误:" + err);
+            console.log("保活-调起po-命令行执行错误:" + err);
           } else {
-            console.log("保活-调起helloworld-命令行执行成功!");
+            console.log("保活-调起po-命令行执行成功!");
           }
         }
       );
@@ -157,6 +157,7 @@ function keep_argo_alive() {
 setInterval(keep_argo_alive, 30 * 1000);
 // keepalive end
 
+/*
 //下载helloworld可执行文件
 app.get("/download", function (req, res) {
   download_web((err) => {
@@ -167,6 +168,7 @@ app.get("/download", function (req, res) {
     }
   });
 });
+*/
 
 app.use(
   "/",
@@ -182,6 +184,7 @@ app.use(
   })
 );
 
+/*
 //初始化，下载web
 function download_web(callback) {
   let fileName = "helloworld";
@@ -206,6 +209,7 @@ download_web((err) => {
     console.log("初始化-下载helloworld文件成功");
   }
 });
+*/
 
 // 启动核心脚本运行web,哪吒和argo
 exec("bash entrypoint.sh", function (err, stdout, stderr) {
@@ -215,5 +219,6 @@ exec("bash entrypoint.sh", function (err, stdout, stderr) {
   }
   console.log(stdout);
 });
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
